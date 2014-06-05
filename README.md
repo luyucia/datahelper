@@ -28,22 +28,32 @@ def test_db():
     print db.getConfig()
 
 def test_date():
+    # 获取前一天
     print dateutil.dateOffset('2014-05-09',1)
+    # 获取后一天
     print dateutil.dateOffset('2014-05-09',-1)
+    # 时间向前偏移300秒
     print dateutil.timeOffset('2014-01-22 10:50:10',300)
+    # 时间向后偏移300秒
     print dateutil.timeOffset('2014-01-22 10:50:10',-300)
+    # 获取一周开始时的日期
     print dateutil.weekBegin('2014-01-22')
+    # 获取周末的日期
     print dateutil.weekEnd('2014-01-22')
+    # 获取月初日期
     print dateutil.monthBegin('2014-01-22')
+    # 获取月末日期
     print dateutil.monthEnd('2014-01-22')
 
 def test_console():
+    # 带颜色的终端输出
     console.colorPrint('wrong')
     console.colorPrint('wrong')
     console.colorPrintln('wrong','green')
     console.colorPrintln('wrong')
 
 def test_sql():
+    # 构造批量插入sql，
     s  =  datahelper.sql.BatchInsert('test')
     for x in xrange(1,10):
       d2 = dict()
