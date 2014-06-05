@@ -3,6 +3,15 @@ datahelper
 
 datahelper is an python framework for data developer
 
+- 数据库操作
+- 构建sql，插入、更新、批量插入
+- 从数据库导出csv，导入csv
+- 日期常用操作
+- 控制台操作
+
+
+
+
 ```python
 #encoding:utf-8
 import datahelper
