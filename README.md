@@ -8,7 +8,7 @@ datahelper is an python framework for data developer
 - 从数据库导出csv，导入csv
 - 日期常用操作
 - 控制台操作
-
+- 数据库元信息，表名，字段名等
 
 
 
@@ -78,5 +78,10 @@ def test_csv():
     conn = db.getConnection()
     # 根据sql导出csv，参数为数据库连接，sql语句，文件名，表头（可选 格式为逗号分隔的字符串）
     datahelper.csvutil.dbToCsv(conn,'select * from dim_device limit 10','device.csv')
+
+def meta(self):
+    print mt.tables()
+    cs = mt.columns('tablename')
+    print mt.ddl('tablename')
 
 ```

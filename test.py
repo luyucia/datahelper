@@ -55,5 +55,15 @@ def test_sql():
 # test_date()
 # test_sql()
 
-conn = db.getConnection()
-datahelper.csvutil.dbToCsv(conn,'select * from dim_device limit 10','device.csv')
+# conn = db.getConnection()
+# datahelper.csvutil.dbToCsv(conn,'select * from dim_device limit 10','device.csv')
+
+mt = datahelper.Meta(db)
+
+# print mt.tables()
+cs = mt.columns('dim_channel')
+
+# print mt.ddl('dim_channel')
+
+for x in cs:
+    print x
