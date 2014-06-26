@@ -45,12 +45,13 @@ class ConnectionFactory(object):
 	dbname = 'default'
 	conf   = ''
 
-	def __init__(self, dbname):
+	def __init__(self, dbname,configFile):
 		super(ConnectionFactory, self).__init__()
 		self.dbname = dbname
+		self.configfile = configFile
 
 	def getConnection(self):
-		dbconfig = DbConfig(self.dbname)
+		dbconfig = DbConfig(self.dbname,self.configfile)
 		conf     = dbconfig.getConfig()
 		self.conf= conf
 		dbtype   = conf['type']
@@ -105,10 +106,10 @@ class Db(object):
 	conn   = None 
 	conf   = ''
 
-	def __init__(self, dbname):
+	def __init__(self, dbname,configFile='db_config.cfg'):
 		super(Db, self).__init__()
 		self.dbname = dbname
-		dbconn      = ConnectionFactory(self.dbname)
+		dbconn      = ConnectionFactory(self.dbname,configFile)
 		self.conn   = dbconn.getConnection()
 		self.conf   = dbconn.getConfig()
 		
