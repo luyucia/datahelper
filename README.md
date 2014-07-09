@@ -84,4 +84,14 @@ def test_meta(self):
     cs = mt.columns('tablename')
     print mt.ddl('tablename')
 
+def test_ip():
+    i = datahelper.IpInfo('qqwry.dat')
+    ip = i.getAddress('113.111.218.219')
+    ip = i.getAddress('173.194.130.4')
+    ip = i.getAddress('221.7.8.246')
+    ip = i.getAddress('113.194.103.228')
+    ip = i.getAddress('222.170.63.27')
+    print ip[0]
+    print ip[1]
+
 ```

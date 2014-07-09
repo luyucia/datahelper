@@ -133,6 +133,8 @@ class Db(object):
 			self.conn.rollback()
 			print e
 			raise Exception
+		# finally:
+		# 	cur.close()
 
 	def fetchone(self):
 		return self.conn.cursor().fetchone()
@@ -143,9 +145,11 @@ class Db(object):
 		cur.execute(sql)
 		if fetchall:
 			alldata = cur.fetchall()
+			# cur.close()
 			return alldata
 		else:
 			return cur
+		self.conn.commit()
 
 	def executemany(self,sql,val):
 		cur = self.conn.cursor()
