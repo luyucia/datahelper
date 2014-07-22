@@ -11,7 +11,7 @@ def typeChange(value):
 		return str(value)
 	elif value==None:
 		return "null"
-	elif value_type is types.StringType:
+	elif value_type is types.StringType or value_type is types.UnicodeType:
 		return "'%s'"%value.replace("'",'`')
 	else:
 		return "'%s'"%value

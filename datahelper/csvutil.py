@@ -12,7 +12,7 @@ def arrayEncode(arr,enc,source_enc='utf-8'):
 	import types
 	list = []
 	for i in arr:
-		if type(i) is types.StringType:
+		if type(i) is types.StringType or type(i) is types.UnicodeType:
 			list.append(i.decode(source_enc).encode(enc))
 		else:
 			list.append(i)
