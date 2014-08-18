@@ -93,5 +93,25 @@ def test_ip():
     ip = i.getAddress('222.170.63.27')
     print ip[0]
     print ip[1]
+    
+def test_ssh():
+    shell = datahelper.Ssh('10.0.0.238','root','Tzqg.Kb47')
+    shell.scp2('/home/cloud/jobs/job/etl/dwetl/2014-07-01-log_logout.csv','/data/tmp/2014-07-01')
+
+def test_bloomfilter():
+    b = datahelper.BloomFilter('url')
+    b.set('http://www.cnblogs.com/dolphin0520/archive/2012/11/10/2755089.html')
+    b.set('3')
+    b.set('luyu3')
+    b.set('http://bbs.paris8.org/viewthread.php?tid=6919&page=1')
+    print b.get('http://www.cnblogs.com/dolphin0520/archive/2012/11/10/2755089.html')
+    print b.get('http://bbs.paris8.org/viewthread.php?tid=6919&page=1')
+    print b.get('luyu234233')
+    print b.get('luyu2342344')
+    print b.get('1')
+    print b.get('2')
+    print b.get('3')
+    print b.get('4')
+    print b.get('5')
 
 ```
