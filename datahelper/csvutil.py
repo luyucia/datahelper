@@ -8,29 +8,32 @@ import time
 import os
 
 # 给一个数组（tuple或list）编码，参数为数组，目标编码，源编码（默认utf-8）
-def arrayEncode(arr,enc,source_enc='utf-8'):
+def arrayEncode(arr,enc,source_enc='utf-8',encodechange=True):
 	import types
 	list = []
 	for i in arr:
 		if type(i) is types.StringType or type(i) is types.UnicodeType:
-			list.append(i.decode(source_enc).encode(enc))
+			if encodechange:
+				list.append(i.decode(source_enc).encode(enc).strip())
+			else:
+				list.append(i.strip())
 		else:
 			list.append(i)
 	return list
 
 # 数据库->CSV文件，参数为数据库连接、sql语句、csv文件名，表头(可选，逗号分隔，默认不填即表头)
-def dbToCsv(conn,sql,file_path,title=''):
+def dbToCsv(conn,sql,file_path,title='',enc=True):
 	stime = time.time()
 	writer  =  csv.writer(file(file_path,'wb'))
 	c       =  conn.cursor()
 	c.execute(sql)
 	print 'Run Sql-->'+sql
 	if title!='':
-		writer.writerow(arrayEncode(title.split(','),'gb18030'))
+		writer.writerow(arrayEncode(title.split(','),'gb18030',encodechange=enc))
 	while True:
 		row = c.fetchone()
 		if not row:break
-		writer.writerow(arrayEncode(row,'gb18030'))
+		writer.writerow(arrayEncode(row,'gb18030',encodechange=enc))
 	print 'Export to '+os.path.abspath(file_path)+' Finished![Time Cost:%s s]'%(time.time()-stime)
 
 # CSV文件->数据库，参数为文件名，连接，表名
