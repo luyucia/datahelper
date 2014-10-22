@@ -210,6 +210,17 @@ class IpInfo(object):
             offset = self.getLong3(o + 4)
             (c, a) = self.getAddr(offset + 4)
             print "%s %d %s/%s" % (ip, offset, c, a)
+
+    def getProvince(self, ip):
+        if ip=='':
+            return ''
+        add = self.getAddress(ip)
+        i   = add[0].find('省')
+        if i>0:
+            return add[0][0:i]
+        else:
+            return add[0]
+        
  
 # if __name__ == '__main__':
 #     i = IPInfo('QQWry.Dat')

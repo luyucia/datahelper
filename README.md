@@ -113,5 +113,19 @@ def test_bloomfilter():
     print b.get('3')
     print b.get('4')
     print b.get('5')
+    
+def test_presto():
+    db = datahelper.Presto('localhost',8099)
+    sql = '''
+    select 
+    serverid,
+    sum(count)
+    from 
+    op_online_user_dist
+    group by serverid
+    '''
+    data =  db.query(sql)
+    for x in data:
+        print x[0]
 
 ```
