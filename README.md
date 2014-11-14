@@ -9,6 +9,7 @@ datahelper is an python framework for data developer
 - 日期常用操作
 - 控制台操作
 - 数据库元信息，表名，字段名等
+- 发送带附件的邮件，把跑完的csv直接发送给业务方,非常的方便
 
 
 
@@ -127,5 +128,12 @@ def test_presto():
     data =  db.query(sql)
     for x in data:
         print x[0]
+
+def testEmailHelper():
+    e = datahelper.EmailHelper('luyu@kingsoft.com','bjmail.kingsoft.com','luyu','pxxxxxx')
+    e.setContent("test","<h1>你好</h1>")
+    e.addAttach("README.rst",'测试文件.txt')
+    e.addAttach("README.rst",'测试文件2.txt')
+    e.send('luyu@kingsoft.com')
 
 ```

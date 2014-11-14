@@ -57,6 +57,9 @@ def test_ip():
     ip = i.getAddress('221.7.8.246')
     ip = i.getAddress('113.194.103.228')
     ip = i.getAddress('222.170.63.27')
+    print i.getProvince('113.111.218.219')
+    print i.getProvince('222.170.63.27')
+    print i.getProvince('221.7.8.246')
     print ip[0]
     print ip[1]
 
@@ -80,11 +83,20 @@ def test_bloomfilter():
     print b.get('4')
     print b.get('5')
 
+
+def testEmailHelper():
+    e = datahelper.EmailHelper('luyu@kingsoft.com','bjmail.kingsoft.com','luyu','pxxxxxx')
+    e.setContent("test","<h1>你好</h1>")
+    e.addAttach("README.rst",'测试文件.txt')
+    e.addAttach("README.rst",'测试文件2.txt')
+    e.send('luyu@kingsoft.com')
+
 # test_db()
 # test_console()
 # test_date()
 # test_sql()
 # test_ip()
+testEmailHelper()
 
 # conn = db.getConnection()
 # datahelper.csvutil.dbToCsv(conn,'select * from dim_device limit 10','device.csv')
@@ -98,9 +110,9 @@ def test_bloomfilter():
 
 # for x in cs:
 #     print x
-import redis
-r  = redis.StrictRedis(host='127.0.0.1', port=6379, db=8 , password='6KGz$1mub')
+# import redis
+# r  = redis.StrictRedis(host='127.0.0.1', port=6379, db=8 , password='6KGz$1mub')
 
-r.setbit('rep:user',1000000000,1)
-print r.getbit('rep:user',10000)
-r.delete('rep:user')
+# r.setbit('rep:user',1000000000,1)
+# print r.getbit('rep:user',10000)
+# r.delete('rep:user')

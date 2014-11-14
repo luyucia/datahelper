@@ -7,6 +7,7 @@ from ip import IpInfo
 import csvutil
 from  meta import Meta
 from bloomfilter import BloomFilter
+from mail import EmailHelper
 from ssh import Ssh
 
 __version__ = '0.3.0'
