@@ -96,7 +96,7 @@ def test_ip():
     print ip[1]
     
 def test_ssh():
-    shell = datahelper.Ssh('10.0.0.238','root','Tzqg.Kb47')
+    shell = datahelper.Ssh('10.0.0.xxxx','root','xxxx')
     shell.scp2('/home/cloud/jobs/job/etl/dwetl/2014-07-01-log_logout.csv','/data/tmp/2014-07-01')
 
 def test_bloomfilter():
