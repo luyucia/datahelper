@@ -108,11 +108,14 @@ class BatchInsert(object):
 
 	def clean(self):
 		self.values = []
+		self.counts = 0
 
 
 	def getSql(self):
 		if self.values!='':
 			return self.sql_head+','.join(self.values)
+		else:
+			return ""
 
 
 
