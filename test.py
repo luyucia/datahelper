@@ -91,6 +91,11 @@ def testEmailHelper():
     e.addAttach("README.rst",'测试文件2.txt')
     e.send('luyu@kingsoft.com')
 
+def testPresto():
+    p = datahelper.Presto('10.0.2.11',8099)
+    sql='''show tables'''
+    print p.query(sql)
+    
 # test_db()
 # test_console()
 # test_date()
