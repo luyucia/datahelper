@@ -16,7 +16,7 @@ setup(
     version=__version__,
     description='datahelper is a framework for data developer',
     long_description=long_description,
-    url='',
+    url='https://github.com/luyucia/datahelper',
     author='Luyu',
     author_email='luyucia@gmail.com',
     maintainer='Luyu',
@@ -37,5 +37,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
-    ]
+    ],
+    install_requires = ['pexpect']
 )

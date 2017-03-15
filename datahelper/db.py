@@ -37,7 +37,7 @@ class DbConfig(object):
 	def getConfig(self):
 		return self.configs
 
-		
+
 
 # 数据库连接简单工厂方法
 class ConnectionFactory(object):
@@ -61,11 +61,11 @@ class ConnectionFactory(object):
 		database = conf['database']
 		port     = int(conf['port'])
 		encoding = conf['encoding']
-		
+
 		if dbtype=='mysql':
 			try:
-				import MySQLdb
-				c = MySQLdb.connect(host,username,password,database,charset=encoding,port=port)
+				import cymysql
+				c = cymysql.connect(host,username,password,database,charset=encoding,port=port)
 			except Exception, e:
 				print e
 				raise Exception
@@ -90,20 +90,20 @@ class ConnectionFactory(object):
 			except Exception, e:
 				print e
 				raise Exception
-	
+
 		return c
-	
-	
+
+
 	def getConfig(self):
 		return self.conf
 
-		
+
 
 class Db(object):
 	"""DataBase operate class"""
 
 	dbname = 'default'
-	conn   = None 
+	conn   = None
 	conf   = ''
 
 	def __init__(self, dbname,configFile='db_config.cfg'):
@@ -112,16 +112,16 @@ class Db(object):
 		dbconn      = ConnectionFactory(self.dbname,configFile)
 		self.conn   = dbconn.getConnection()
 		self.conf   = dbconn.getConfig()
-		
+
 	def getConnection(self):
 		return self.conn
 
 	def getConfig(self):
 		return self.conf
-	
+
 	def getCursor(self):
 		return self.conn.cursor()
-		
+
 	def execute(self,sql,auto_commit=True):
 		# print "[" + time.strftime("%Y-%m-%d %X",time.localtime()) + "]Execute sql is: \n" + sql + "\n"
 		cur = self.conn.cursor()
@@ -163,7 +163,7 @@ class Db(object):
 
 	def commit(self):
 		self.conn.commit()
-	
+
 	def rollback(self):
 		self.conn.rollback()
 
