@@ -38,5 +38,8 @@ setup(
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
     ],
-    install_requires = ['pexpect']
+    install_requires = [
+    'pexpect',
+    'cymysql'
+    ]
 )

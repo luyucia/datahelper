@@ -126,6 +126,11 @@ class Db(object):
 		# print "[" + time.strftime("%Y-%m-%d %X",time.localtime()) + "]Execute sql is: \n" + sql + "\n"
 		cur = self.conn.cursor()
 		try:
+			self.conn.ping()
+		except Exception, e:
+			self.reConnect()
+
+		try:
 			cur.execute(sql)
 			if auto_commit:
 				self.conn.commit()
@@ -150,6 +155,11 @@ class Db(object):
 		else:
 			return cur
 		self.conn.commit()
+
+	def queryOne(self,sql):
+		cur = self.conn.cursor()
+		cur.execute(sql)
+		return cur.fetchone()
 
 	def executemany(self,sql,val):
 		cur = self.conn.cursor()
